@@ -13,7 +13,7 @@ import {
 	BlockControls,
 	AlignmentToolbar,
 	RichText,
-} from '@wordpress/editor';
+} from '@wordpress/block-editor';
 import { join, split, create, toHTMLString } from '@wordpress/rich-text';
 import { G, Path, SVG } from '@wordpress/components';
 

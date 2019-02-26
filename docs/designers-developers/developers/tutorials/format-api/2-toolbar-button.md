@@ -35,7 +35,7 @@ Let's check that everything is working as expected. Reload the post/page and sel
 ![Toolbar with custom button](https://raw.githubusercontent.com/WordPress/gutenberg/master/docs/designers-developers/assets/toolbar-with-custom-button.png)
 
 You may also want to check that upon clicking the button the `toggle format` message is shown in your browser's console.
-
+## Show the button only for specific blocks
 By default, the button is rendered on every rich text toolbar (image captions, buttons, paragraphs, etc).
 It is possible to render the button only on blocks of a certain type by using `wp.data.withSelect` together with `wp.compose.ifCondition`.
 The following sample code renders the previously shown button only on paragraph blocks:

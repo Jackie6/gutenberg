@@ -1041,6 +1041,8 @@ export class RichText extends Component {
 			isSelected,
 			autocompleters,
 			onTagNameChange,
+			start,
+			reversed,
 		} = this.props;
 
 		// Generating a key that includes `tagName` ensures that if the tag
@@ -1103,6 +1105,8 @@ export class RichText extends Component {
 								onMouseDown={ this.onPointerDown }
 								onTouchStart={ this.onPointerDown }
 								setRef={ this.setRef }
+								start={ start }
+								reversed={ reversed }
 							/>
 							{ isPlaceholderVisible &&
 								<Tagname

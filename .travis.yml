@@ -110,4 +110,3 @@ jobs:
       env: WP_VERSION=latest SWITCH_TO_PHP=5.2
       script:
         - ./bin/run-wp-unit-tests.sh
-

@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { RichText, InspectorControls } from '@wordpress/block-editor';
-import { Fragment, useState } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 import { BaseControl, PanelBody, ToggleControl } from '@wordpress/components';
 
 /**
@@ -25,31 +25,33 @@ export default function ListEdit( {
 	onReplace,
 	className,
 } ) {
-	const { ordered, values } = attributes;
-	const [ startValue, setStartValue ] = useState( '' );
-	const [ reversed, setReversed ] = useState( false );
-	const [ listType, setListType ] = useState( 'list-type-decimal' );
+	const { ordered, values, reversed, start, type, description } = attributes;
 
 	const listTypes = [
 		{
 			name: __( 'Decimal' ),
-			type: 'list-type-decimal',
+			type: '1',
+			description: 'list-type-decimal',
 		},
 		{
 			name: __( 'Lower alpha' ),
-			type: 'list-type-lower-alpha',
+			type: 'a',
+			description: 'list-type-lower-alpha',
 		},
 		{
 			name: __( 'Upper alpha' ),
-			type: 'list-type-upper-alpha',
+			type: 'A',
+			description: 'list-type-upper-alpha',
 		},
 		{
 			name: __( 'Lower roman' ),
-			type: 'list-type-lower-roman',
+			type: 'i',
+			description: 'list-type-lower-roman',
 		},
 		{
 			name: __( 'Upper roman' ),
-			type: 'list-type-upper-roman',
+			type: 'I',
+			description: 'list-type-upper-roman',
 		},
 	];
 
@@ -61,10 +63,11 @@ export default function ListEdit( {
 				tagName={ ordered ? 'ol' : 'ul' }
 				onChange={ ( nextValues ) => setAttributes( { values: nextValues } ) }
 				value={ values }
-				start={ startValue }
+				start={ start }
 				reversed={ reversed }
+				type={ type }
 				wrapperClassName="block-library-list"
-				className={ classnames( className, listType ) }
+				className={ ordered ? classnames( className, description ) : className }
 				placeholder={ __( 'Write list…' ) }
 				onMerge={ mergeBlocks }
 				unstableOnSplit={
@@ -95,22 +98,18 @@ export default function ListEdit( {
 					<PanelBody title={ __( 'Ordered List Settings' ) }>
 						<ListTypePicker
 							listTypes={ listTypes }
-							value={ listType }
-							onChange={ ( newListType ) => {
-								setListType( newListType );
+							value={ type }
+							onChange={ ( newType, newDescription ) => {
+								setAttributes( { type: newType, description: newDescription } );
 							} }
 						/>
 						<BaseControl label={ __( 'Start Value' ) } >
 							<input
 								type="number"
 								onChange={ ( event ) => {
-									let inputStartValue = parseInt( event.target.value, 10 );
-									if ( isNaN( inputStartValue ) ) {
-										inputStartValue = '';
-									}
-									setStartValue( inputStartValue );
+									setAttributes( { start: parseInt( event.target.value, 10 ) } );
 								} }
-								value={ startValue }
+								value={ start }
 								step="1"
 							/>
 						</BaseControl>
@@ -118,7 +117,7 @@ export default function ListEdit( {
 							label={ __( 'Reverse List' ) }
 							checked={ !! reversed }
 							onChange={ ( ) => {
-								setReversed( ! reversed );
+								setAttributes( { reversed: ! reversed } );
 							} }
 						/>
 					</PanelBody>

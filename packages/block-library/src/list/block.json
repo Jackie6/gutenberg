@@ -12,6 +12,22 @@
 			"selector": "ol,ul",
 			"multiline": "li",
 			"default": ""
+		},
+		"start": {
+			"type": "string",
+			"default": ""
+		},
+		"reversed": {
+			"type": "boolean",
+			"default": false
+		},
+		"type": {
+			"type": "string",
+			"default": "1"
+		},
+		"description": {
+			"type": "string",
+			"default": "list-type-decimal"
 		}
 	}
 }

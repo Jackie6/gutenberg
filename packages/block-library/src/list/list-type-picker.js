@@ -49,13 +49,13 @@ function ListTypePicker( {
 						) }
 						renderContent={ () => (
 							<NavigableMenu>
-								{ map( listTypes, ( { name, type } ) => {
+								{ map( listTypes, ( { name, type, description } ) => {
 									const isSelected = ( value === type || ( ! value && name === 'decimal' ) );
 
 									return (
 										<Button
 											key={ name }
-											onClick={ () => onChange( type ) }
+											onClick={ () => onChange( type, description ) }
 
 											role="menuitemradio"
 											aria-checked={ isSelected }

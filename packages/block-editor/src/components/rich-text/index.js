@@ -1043,6 +1043,7 @@ export class RichText extends Component {
 			onTagNameChange,
 			start,
 			reversed,
+			type,
 		} = this.props;
 
 		// Generating a key that includes `tagName` ensures that if the tag
@@ -1107,6 +1108,7 @@ export class RichText extends Component {
 								setRef={ this.setRef }
 								start={ start }
 								reversed={ reversed }
+								type={ type }
 							/>
 							{ isPlaceholderVisible &&
 								<Tagname

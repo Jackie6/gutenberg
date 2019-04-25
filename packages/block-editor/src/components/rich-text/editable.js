@@ -120,7 +120,7 @@ export default class Editable extends Component {
 		}
 
 		if ( this.props.start !== nextProps.start ) {
-			this.editorNode.start = nextProps.start;
+			this.editorNode.setAttribute( 'start', nextProps.start );
 		}
 
 		if ( this.props.reversed !== nextProps.reversed ) {

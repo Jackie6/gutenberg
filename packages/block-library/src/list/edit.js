@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -25,33 +20,28 @@ export default function ListEdit( {
 	onReplace,
 	className,
 } ) {
-	const { ordered, values, reversed, start, type, description } = attributes;
+	const { ordered, values, reversed, start, type } = attributes;
 
 	const listTypes = [
 		{
 			name: __( 'Decimal' ),
 			type: '1',
-			description: 'list-type-decimal',
 		},
 		{
 			name: __( 'Lower alpha' ),
 			type: 'a',
-			description: 'list-type-lower-alpha',
 		},
 		{
 			name: __( 'Upper alpha' ),
 			type: 'A',
-			description: 'list-type-upper-alpha',
 		},
 		{
 			name: __( 'Lower roman' ),
 			type: 'i',
-			description: 'list-type-lower-roman',
 		},
 		{
 			name: __( 'Upper roman' ),
 			type: 'I',
-			description: 'list-type-upper-roman',
 		},
 	];
 
@@ -67,7 +57,7 @@ export default function ListEdit( {
 				reversed={ reversed }
 				type={ type }
 				wrapperClassName="block-library-list"
-				className={ ordered ? classnames( className, description ) : className }
+				className={ className }
 				placeholder={ __( 'Write list…' ) }
 				onMerge={ mergeBlocks }
 				unstableOnSplit={
@@ -99,8 +89,8 @@ export default function ListEdit( {
 						<ListTypePicker
 							listTypes={ listTypes }
 							value={ type }
-							onChange={ ( newType, newDescription ) => {
-								setAttributes( { type: newType, description: newDescription } );
+							onChange={ ( newType ) => {
+								setAttributes( { type: newType } );
 							} }
 						/>
 						<BaseControl label={ __( 'Start Value' ) } >

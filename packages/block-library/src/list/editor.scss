@@ -4,24 +4,24 @@
 	margin-left: 1.3em;
 }
 
-.editor-styles-wrapper .block-library-list .list-type-decimal {
-	list-style-type: decimal;
+.editor-styles-wrapper .block-library-list ol[type="1"] {
+	list-style: decimal;
 }
 
-.editor-styles-wrapper .block-library-list .list-type-lower-alpha {
-	list-style-type: lower-alpha;
+.editor-styles-wrapper .block-library-list ol[type="a"] {
+	list-style: lower-alpha;
 }
 
-.editor-styles-wrapper .block-library-list .list-type-upper-alpha {
-	list-style-type: upper-alpha;
+.editor-styles-wrapper .block-library-list ol[type="A"] {
+	list-style: upper-alpha;
 }
 
-.editor-styles-wrapper .block-library-list .list-type-lower-roman {
-	list-style-type: lower-roman;
+.editor-styles-wrapper .block-library-list ol[type="i"] {
+	list-style: lower-roman;
 }
 
-.editor-styles-wrapper .block-library-list .list-type-upper-roman {
-	list-style-type: upper-roman;
+.editor-styles-wrapper .block-library-list ol[type="I"] {
+	list-style: upper-roman;
 }
 
 .components-list-type-picker__buttons {

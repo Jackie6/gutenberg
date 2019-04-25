@@ -24,10 +24,6 @@
 		"type": {
 			"type": "string",
 			"default": "1"
-		},
-		"description": {
-			"type": "string",
-			"default": "list-type-decimal"
 		}
 	}
 }

@@ -1,16 +1,16 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { RichText, InspectorControls } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
-import { BaseControl, PanelBody, ToggleControl } from '@wordpress/components';
-
-/**
- * Internal dependencies
- */
-import ListTypePicker from './list-type-picker';
+import { BaseControl, PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 
 export default function ListEdit( {
 	attributes,
@@ -21,29 +21,6 @@ export default function ListEdit( {
 	className,
 } ) {
 	const { ordered, values, reversed, start, type } = attributes;
-
-	const listTypes = [
-		{
-			name: __( 'Decimal' ),
-			type: '1',
-		},
-		{
-			name: __( 'Lower alpha' ),
-			type: 'a',
-		},
-		{
-			name: __( 'Upper alpha' ),
-			type: 'A',
-		},
-		{
-			name: __( 'Lower roman' ),
-			type: 'i',
-		},
-		{
-			name: __( 'Upper roman' ),
-			type: 'I',
-		},
-	];
 
 	return (
 		<Fragment>
@@ -57,7 +34,7 @@ export default function ListEdit( {
 				reversed={ reversed }
 				type={ type }
 				wrapperClassName="block-library-list"
-				className={ className }
+				className={ ordered ? classnames( className, 'ol-type-is-' + type ) : className }
 				placeholder={ __( 'Write list…' ) }
 				onMerge={ mergeBlocks }
 				unstableOnSplit={
@@ -86,11 +63,18 @@ export default function ListEdit( {
 				ordered &&
 				<InspectorControls>
 					<PanelBody title={ __( 'Ordered List Settings' ) }>
-						<ListTypePicker
-							listTypes={ listTypes }
+						<SelectControl
+							label={ __( 'List Type' ) }
 							value={ type }
-							onChange={ ( newType ) => {
-								setAttributes( { type: newType } );
+							options={ [
+								{ label: 'Decimal', value: '1' },
+								{ label: 'Lower alpha', value: 'a' },
+								{ label: 'Upper alpha', value: 'A' },
+								{ label: 'Lower alpha', value: 'i' },
+								{ label: 'Upper alpha', value: 'I' },
+							] }
+							onChange={ ( nextType ) => {
+								setAttributes( { type: nextType } );
 							} }
 						/>
 						<BaseControl label={ __( 'Start Value' ) } >

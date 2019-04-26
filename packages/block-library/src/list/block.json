@@ -14,8 +14,7 @@
 			"default": ""
 		},
 		"start": {
-			"type": "string",
-			"default": ""
+			"type": "number"
 		},
 		"reversed": {
 			"type": "boolean",

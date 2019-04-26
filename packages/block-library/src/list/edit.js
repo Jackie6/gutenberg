@@ -89,7 +89,7 @@ export default function ListEdit( {
 						</BaseControl>
 						<ToggleControl
 							label={ __( 'Reverse List' ) }
-							checked={ !! reversed }
+							checked={ reversed }
 							onChange={ ( ) => {
 								setAttributes( { reversed: ! reversed } );
 							} }

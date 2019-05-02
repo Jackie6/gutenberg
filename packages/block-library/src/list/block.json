@@ -17,12 +17,10 @@
 			"type": "number"
 		},
 		"reversed": {
-			"type": "boolean",
-			"default": false
+			"type": "boolean"
 		},
 		"type": {
-			"type": "string",
-			"default": "1"
+			"type": "string"
 		}
 	}
 }

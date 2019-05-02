@@ -57,7 +57,12 @@ export default function ListEdit( {
 						undefined
 				}
 				onRemove={ () => onReplace( [] ) }
-				onTagNameChange={ ( tag ) => setAttributes( { ordered: tag === 'ol' } ) }
+				onTagNameChange={ ( tag ) => {
+					setAttributes( { ordered: tag === 'ol' } );
+					if ( tag !== 'ol' ) {
+						setAttributes( { start: undefined, reversed: undefined, type: undefined } );
+					}
+				} }
 			/>
 			{
 				ordered &&
@@ -82,6 +87,9 @@ export default function ListEdit( {
 								type="number"
 								onChange={ ( event ) => {
 									setAttributes( { start: parseInt( event.target.value, 10 ) } );
+									if ( isNaN( parseInt( event.target.value, 10 ) ) ) {
+										setAttributes( { start: null } );
+									}
 								} }
 								value={ start }
 								step="1"

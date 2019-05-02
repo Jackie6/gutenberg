@@ -8,6 +8,6 @@ export default function save( { attributes } ) {
 	const tagName = ordered ? 'ol' : 'ul';
 
 	return (
-		<RichText.Content tagName={ tagName } value={ values } reversed={ reversed } start={ start } type={ type } className={ ordered && ( typeof type !== 'undefined' ) ? 'ol-type-is-' + type : undefined } multiline="li" />
+		<RichText.Content tagName={ tagName } value={ values } reversed={ reversed } start={ start } type={ type } className={ ( ordered && type ) ? 'ol-type-is-' + type : undefined } multiline="li" />
 	);
 }

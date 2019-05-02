@@ -34,7 +34,7 @@ export default function ListEdit( {
 				reversed={ reversed }
 				type={ type }
 				wrapperClassName="block-library-list"
-				className={ ordered && ( typeof type !== 'undefined' ) ? classnames( className, 'ol-type-is-' + type ) : className }
+				className={ ( ordered && type ) ? classnames( className, 'ol-type-is-' + type ) : className }
 				placeholder={ __( 'Write list…' ) }
 				onMerge={ mergeBlocks }
 				unstableOnSplit={
@@ -60,7 +60,7 @@ export default function ListEdit( {
 				onTagNameChange={ ( tag ) => {
 					setAttributes( { ordered: tag === 'ol' } );
 					if ( tag !== 'ol' ) {
-						setAttributes( { start: undefined, reversed: undefined, type: undefined } );
+						setAttributes( { start: null, reversed: null, type: null } );
 					}
 				} }
 			/>
@@ -70,7 +70,7 @@ export default function ListEdit( {
 					<PanelBody title={ __( 'Ordered List Settings' ) }>
 						<SelectControl
 							label={ __( 'List Type' ) }
-							value={ type }
+							value={ type ? type : '1' }
 							options={ [
 								{ label: 'Decimal', value: '1' },
 								{ label: 'Lower alpha', value: 'a' },
@@ -91,7 +91,7 @@ export default function ListEdit( {
 										setAttributes( { start: null } );
 									}
 								} }
-								value={ start }
+								value={ start ? start : '' }
 								step="1"
 							/>
 						</BaseControl>

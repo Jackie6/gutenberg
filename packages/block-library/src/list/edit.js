@@ -34,7 +34,7 @@ export default function ListEdit( {
 				reversed={ reversed }
 				type={ type }
 				wrapperClassName="block-library-list"
-				className={ ordered ? classnames( className, 'ol-type-is-' + type ) : className }
+				className={ ordered && ( typeof type !== 'undefined' ) ? classnames( className, 'ol-type-is-' + type ) : className }
 				placeholder={ __( 'Write list…' ) }
 				onMerge={ mergeBlocks }
 				unstableOnSplit={
